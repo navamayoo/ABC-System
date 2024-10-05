@@ -10,6 +10,11 @@ namespace Booking.Data
             
         }
 
-        public DbSet<Country> Country { get; set; }
+        public DbSet<Country> Countries { get; set; }
+
+        internal void Remove()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

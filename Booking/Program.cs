@@ -1,3 +1,4 @@
+using Booking.Common;
 using Booking.Data;
 using Microsoft.EntityFrameworkCore;
 
@@ -16,6 +17,11 @@ builder.Services.AddCors(options =>
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
 builder.Services.AddDbContext<ApplicationDbContext>(options =>options.UseSqlServer(connectionString));
 #endregion
+
+#region Configure Automapper
+
+builder.Services.AddAutoMapper(typeof(MappingProfile));
+#endregion 
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
