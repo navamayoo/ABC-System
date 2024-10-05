@@ -11,6 +11,7 @@ namespace Booking.Data
         }
 
         public DbSet<Country> Countries { get; set; }
+        public DbSet<States> States { get; set; }
 
         internal void Remove()
         {
