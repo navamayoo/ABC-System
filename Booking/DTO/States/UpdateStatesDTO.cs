@@ -1,6 +1,6 @@
 ﻿namespace Booking.DTO.States
 {
-    public class UpdateStates
+    public class UpdateStatesDTO
     {
         public int Id { get; set; }
         public string Name { get; set; }

@@ -2,14 +2,19 @@
 
 namespace Booking.Repository.IRepository
 {
-    public interface ICountryRepository
+    //public interface ICountryRepository
+    //{
+    //    Task<List<Country>> GetAll();
+    //    Task<Country> GetById(int id);
+    //    Task Create(Country country);
+    //    Task Update(Country country);
+    //    Task Delete(Country country);
+    //    Task Save();
+    //    bool IsCountryExsist(string name);
+    //}
+
+    public interface ICountryRepository : IGenericRepository<Country>
     {
-        Task<List<Country>> GetAll();
-        Task<Country> GetById(int id);
-        Task Create(Country country);
         Task Update(Country country);
-        Task Delete(Country country);
-        Task Save();
-        bool IsCountryExsist(string name);
     }
 }

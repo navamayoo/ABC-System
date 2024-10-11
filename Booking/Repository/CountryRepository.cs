@@ -5,48 +5,13 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Booking.Repository
 {
-    public class CountryRepository : ICountryRepository
+    public class CountryRepository : GenericRepository<Country>, ICountryRepository
     {
 
         private readonly ApplicationDbContext _dbContext;
-        public CountryRepository(ApplicationDbContext dbContext)
+        public CountryRepository(ApplicationDbContext dbContext): base(dbContext) 
         {
             _dbContext=dbContext;
-        }
-        public async Task Create(Country country)
-        {
-            await _dbContext.AddAsync(country);
-            await Save();
-        }
-
-        public async Task Delete(Country country)
-        {
-            _dbContext.Countries.Remove(country);
-            await Save();
-        }
-
-
-        public async Task<List<Country>> GetAll()
-        {
-            var countries = await _dbContext.Countries.ToListAsync();
-            return countries;
-        }
-
-        public async Task<Country> GetById(int id)
-        {
-            var country = await _dbContext.Countries.FindAsync(id);
-            return country;
-        }
-
-        public bool IsCountryExsist(string name)
-        {
-            var result = _dbContext.Countries.AsQueryable().Where(x => x.Name.ToLower().Trim() == name.ToLower().Trim()).Any();
-            return result;
-        }
-
-        public async Task Save()
-        {
-            await _dbContext.SaveChangesAsync();
         }
 
         public async Task Update(Country country)
@@ -54,5 +19,6 @@ namespace Booking.Repository
             _dbContext.Countries.Update(country);
             await Save();
         }
+
     }
 }
