@@ -24,7 +24,7 @@ namespace Booking.Controllers
         [HttpGet("{id:int}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
-        public async Task<ActionResult<CountryDTO>> GetBtId(int id) 
+        public async Task<ActionResult<CountryDTO>> GetById(int id) 
         {
             var country = await _countryRepository.GetById(id);
 
@@ -39,7 +39,6 @@ namespace Booking.Controllers
         [HttpGet]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
-
         public async Task<ActionResult <IEnumerable<CountryDTO>>> Getall()
         {
             var countries = await _countryRepository.GetAll();
@@ -49,9 +48,6 @@ namespace Booking.Controllers
                 return NoContent();
             }
             return Ok(countriesDto);
-
-   
-
         }
 
         [HttpPost]
